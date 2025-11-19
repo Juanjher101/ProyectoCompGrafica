@@ -1,0 +1,11 @@
+<div class="mb-4 p-8">
+    <p-card>
+         <p-selectbutton
+            [options]="stateOptions"
+            [(ngModel)]="flightType"
+            optionLabel="label"
+            optionValue="value"/>
+        <app-toolbar
+            [flightType]="flightType"></app-toolbar>
+    </p-card>
+</div>

@@ -4,6 +4,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
+import { Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-toolbar',
@@ -14,9 +16,12 @@ import { FormsModule } from '@angular/forms';
         DropdownModule,
         CalendarModule,
         ButtonModule,
-        FormsModule
+        FormsModule,
+        CommonModule
     ]
 })
+
+
 export class ToolbarBasicDemo implements OnInit {
 
     ciudades: any[] = [];
@@ -26,6 +31,8 @@ export class ToolbarBasicDemo implements OnInit {
     destino: any;
     fecha: Date | undefined;
     pasajeros: number | undefined;
+
+    @Input() flightType: string = 'doble';
 
     ngOnInit() {
         this.ciudades = [
