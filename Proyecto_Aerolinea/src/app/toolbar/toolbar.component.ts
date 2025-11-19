@@ -29,8 +29,9 @@ export class ToolbarBasicDemo implements OnInit {
 
     origen: any;
     destino: any;
-    fecha: Date | undefined;
-    pasajeros: number | undefined;
+    fechaIda: Date = new Date();
+    fechaVuelta: Date = new Date();
+    pasajeros: number | undefined;;
 
     @Input() flightType: string = 'doble';
 
@@ -48,13 +49,19 @@ export class ToolbarBasicDemo implements OnInit {
             { name: 'Manizales' }
         ];
 
+        this.fechaIda = new Date();
+
+        this.fechaVuelta = new Date(this.fechaIda); // copiar fecha
+        this.fechaVuelta.setDate(this.fechaVuelta.getDate() + 3);
+
         this.numeros = Array.from({ length: 10 }, (_, i) => i + 1);
     }
 
     buscar() {
         console.log("Origen:", this.origen);
         console.log("Destino:", this.destino);
-        console.log("Fecha:", this.fecha);
+        console.log("Fecha Ida:", this.fechaIda);
+        console.log("Fecha Vuelta:", this.fechaVuelta)
         console.log("Pasajeros:", this.pasajeros);
     }
 }

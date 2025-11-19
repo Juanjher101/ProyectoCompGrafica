@@ -21,19 +21,20 @@
 
             <!-- FECHA IDA-->
             <p-calendar 
-                [(ngModel)]="fecha"
+                [(ngModel)]="fechaIda"
                 dateFormat="dd/mm/yy"
                 placeholder="Fecha Ida"
+                appendTo="body"
                 class="mr-3">
             </p-calendar>
 
-            <!-- FECHA VUELTA-->
-             
+            <!-- FECHA VUELTA - se oculta si se selecciona solo ida -->  
             <p-calendar
-             *ngIf="flightType == 'doble'" 
-                [(ngModel)]="fecha"
+                *ngIf="flightType == 'doble'"
+                [(ngModel)]="fechaVuelta"
                 dateFormat="dd/mm/yy"
                 placeholder="Fecha Vuelta"
+                appendTo="body"
                 class="mr-3">
             </p-calendar>
 
