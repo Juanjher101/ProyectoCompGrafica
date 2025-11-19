@@ -29,6 +29,11 @@ const MyPreset = definePreset(Aura, {
                 color: 'white',
                 borderColor: 'transparent'
             }
+        },
+        card: {
+            root: {
+            background: '{primary.50'
+            }
         }
     }
 });

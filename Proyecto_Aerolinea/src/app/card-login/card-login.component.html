@@ -1,0 +1,52 @@
+<div style="width: 50%;height: 400px; margin: 110px auto; gap: 50px;">
+    <p-selectbutton [options]="stateOption" [(ngModel)]="action" optionLabel="label" optionValue="value" aria-labelledby="basic"/>
+    <p-card header="Iniciar Sesión" *ngIf="action === 'login'">
+        <div style="gap: 50px; width: 100%; align-items:baseline; display: flex; flex-direction: column;">
+            <form style="align-items: last baseline; display: flex; flex-direction: column; gap: 20px;" [formGroup]="loginForm" (ngModel)="onSubmit()">
+                <!--email-->
+                <input style="width: 200px;" type="text" pInputText formControlName="email" placeholder="correo@example.com" />
+                <!--Avisos de error de email-->
+                <p-message *ngIf="email.invalid && email.touched" severity="error" [text]="getEmailError()"></p-message>
+                    
+                <!--contraseña-->
+                <p-password placeholder="Contraseña (min 8car)" formControlName="password" toggleMask="true" [feedback]="false"></p-password>
+                <!--Avisos de error de contraseña-->
+                <p-message *ngIf="password.invalid && password.touched" severity="error" [text]="getPasswordError()"></p-message>
+            
+                <!--boton-->
+                <p-button label="Ingresar" type="submit" [loading]="loading" [disabled]="loading"></p-button>
+            </form>
+        </div>
+    </p-card>
+
+    <p-card header="Registrarse" *ngIf="action === 'register'">
+        <div style="gap: 50px; width: 100%; align-items:last baseline; display: flex; flex-direction: column;"> 
+             <form style="align-items:first baseline; display: flex; flex-direction: column; gap: 20px;" [formGroup]="registerForm" (ngModel)="onRegister()">  
+                <!--nombre-->
+                <input style="width: 200px;" type="text" pInputText formControlName="nameReg" placeholder="nombre completo" />
+                <p-message *ngIf="nameReg.invalid && nameReg.touched" severity="error" [text]="getNameRegError()"></p-message>
+
+                <!--pais-->
+                <input style="width: 200px;" type="text" pInputText formControlName="paisReg" placeholder="Pais de residencia" />
+                <p-message *ngIf="paisReg.invalid && paisReg.touched" severity="error" [text]="getPaisRegError()"></p-message>
+
+                <!--telefono-->        
+                <input style="width: 200px;" pInputText formControlName="telefonoReg" placeholder="Numero de telefono" />
+                <p-message *ngIf="telefonoReg.invalid && telefonoReg.touched" severity="error" [text]="getTelefonoRegError()"></p-message>
+
+                <!--email-->
+                <input style="width: 200px;" type="text" pInputText formControlName="emailReg" placeholder="correo@example.com" />
+                <!--Avisos de error de email-->
+                <p-message *ngIf="emailReg.invalid && emailReg.touched" severity="error" [text]="getEmailRegError()"></p-message>
+                            
+                <!--contraseña-->
+                <p-password placeholder="Contraseña (min 8car)" formControlName="passwordReg" toggleMask="true" [feedback]="true"></p-password>
+                <!--Avisos de error de contraseña-->
+                <p-message *ngIf="passwordReg.invalid && passwordReg.touched" severity="error" [text]="getPasswordRegError()"></p-message>
+            
+                 <!--boton-->
+                <p-button label="Registrarse" type="submit" [loading]="pulse" [disabled]="pulse"></p-button>
+            </form>
+        </div>
+    </p-card>
+</div>
