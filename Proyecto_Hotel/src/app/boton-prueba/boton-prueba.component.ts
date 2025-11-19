@@ -2,13 +2,12 @@ import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
-import { Ripple } from 'primeng/ripple';
 
 @Component({
   selector: 'app-boton-prueba',
   templateUrl: './boton-prueba.component.html',
   standalone: true,
-  imports: [Toast, ButtonModule, Ripple],
+  imports: [Toast, ButtonModule],
   providers: [MessageService],
   styleUrl: './boton-prueba.component.css'
 })

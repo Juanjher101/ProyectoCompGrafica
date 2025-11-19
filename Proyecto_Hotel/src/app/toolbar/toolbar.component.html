@@ -1,0 +1,55 @@
+<header style="display: flex; justify-content:space-evenly;">
+    <img src="https://i.imgur.com/L6cZFrG.png" width="8%"/>
+    <h1>AIR DJ</h1>
+    <h1>Volamos alto, sonamos fuerte</h1>
+</header>
+
+
+<div class="card">
+    <p-toolbar>
+        <ng-template #start>
+            <!-- ORIGEN -->
+            <p-dropdown 
+                [options]="ciudades" 
+                [(ngModel)]="origen" 
+                placeholder="Origen"
+                optionLabel="name"
+                class="mr-3 w-40">
+            </p-dropdown>
+
+            <!-- DESTINO -->
+            <p-dropdown 
+                [options]="ciudades" 
+                [(ngModel)]="destino" 
+                placeholder="Destino"
+                optionLabel="name"
+                class="mr-3 w-40">
+            </p-dropdown>
+
+            <!-- FECHA -->
+            <p-calendar 
+                [(ngModel)]="fecha"
+                dateFormat="dd/mm/yy"
+                placeholder="Fecha"
+                class="mr-3">
+            </p-calendar>
+
+            <!-- PASAJEROS -->
+            <p-dropdown 
+                [options]="numeros"
+                [(ngModel)]="pasajeros"
+                placeholder="Pasajeros"
+                class="mr-3 w-32">
+            </p-dropdown>
+        </ng-template>
+
+        <ng-template #end>
+            <p-button 
+                label="Buscar" 
+                icon="pi pi-search"
+                severity="primary"
+                (onClick)="buscar()">
+            </p-button>
+        </ng-template>
+    </p-toolbar>
+</div>
