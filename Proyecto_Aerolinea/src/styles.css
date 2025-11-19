@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Walter+Turncoat&display=swap');
+body {
+  font-family: 'Walter Turncoat', cursive !important;
+  font-style: normal;
+}
+.p-component {
+  font-family: 'Walter Turncoat', cursive !important;
+  font-style: normal;
+}
