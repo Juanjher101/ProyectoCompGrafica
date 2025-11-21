@@ -1,0 +1,27 @@
+<app-header></app-header>
+
+<h1 style="text-align:center; font-size:2rem; margin:2rem 0;">Selecciona tu horario de vuelo</h1>
+
+<p-accordion>
+  <p-accordionTab *ngFor="let horario of horarios"
+                  [header]="'Salida: ' + horario.horaSalida + ' - Llegada: ' + horario.horaLlegada"
+                  [selected]="false"
+                  style="margin-bottom: 2rem; font-size:1.3rem; text-align:center; box-shadow: 0 4px 8px rgba(128,0,128,0.2); border-radius: 8px; padding:1rem; background-color:#f5f0fa;"> <!-- acordeón más grande y centrado -->
+    <h3 style="text-align:center; font-size:2rem; margin:2rem 0;">Elige como quieres volar</h3>
+    <div class="cards-container">
+      <p-card *ngFor="let vuelo of horario.vuelos" class="vuelo-card">
+        <h3 style="text-align:center; font-size:1.2rem;">{{ vuelo.tipo }}</h3>
+
+        <ul class="vuelo-info">
+          <li><i class="pi pi-user" pTooltip="{{ vuelo.asientos }} asientos disponibles"></i> Asientos disponibles: {{ vuelo.asientos }}</li>
+          <li><i class="pi pi-suitcase" pTooltip="{{ vuelo.equipaje }} equipajes"></i> Equipaje permitido: {{ vuelo.equipaje }} piezas</li>
+          <li>Descripción: {{ vuelo.descripcion }}</li>
+        </ul>
+
+        <p class="precio">Precio: {{ vuelo.precio | currency }}</p>
+        <p-button label="Seleccionar" (onClick)="seleccionarVuelo(vuelo)" class="w-full"></p-button>
+      </p-card>
+    </div>
+
+  </p-accordionTab>
+</p-accordion>

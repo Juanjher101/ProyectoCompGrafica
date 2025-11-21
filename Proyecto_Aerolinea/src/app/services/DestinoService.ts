@@ -12,4 +12,15 @@ export class DestinoService {
   seleccionarDestino(destino: any) {
     this.destinoSource.next(destino);
   }
+
+  // 🔹 Nueva sección: guardar búsqueda temporal
+  private busquedaTemporal: any = null;
+
+  guardarBusqueda(data: any) {
+    this.busquedaTemporal = data;
+  }
+
+  obtenerBusqueda() {
+    return this.busquedaTemporal;
+  }
 }
