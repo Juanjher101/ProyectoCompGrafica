@@ -33,3 +33,13 @@ body {
 .pi {
   color: #000000 !important; /* morado */
 }
+
+.col-destino p-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* animación suave */
+  cursor: pointer; /* cambia el cursor para que parezca interactivo */
+}
+
+.col-destino p-card:hover {
+  transform: scale(1.05); /* se agranda un poquito */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* sombra más marcada al pasar */
+}

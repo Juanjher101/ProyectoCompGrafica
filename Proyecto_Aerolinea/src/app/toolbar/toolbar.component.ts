@@ -9,6 +9,10 @@ import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 
+// Servicios
+import { VuelosService } from '../services/vuelos.service';
+import { DestinoService } from '../services/DestinoService';// 👈 importamos el servicio
+
 @Component({
     selector: 'app-toolbar',
     templateUrl: './toolbar.component.html',
@@ -24,6 +28,11 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     ]
 })
 export class ToolbarBasicDemo implements OnInit {
+
+    constructor(
+        private vuelosService: VuelosService,
+        private destinoService: DestinoService // 👈 inyectamos el servicio
+    ) {}
 
     // Datos principales
     origen: any = null;
@@ -47,43 +56,64 @@ export class ToolbarBasicDemo implements OnInit {
     numeros: any[] = [];
 
     ngOnInit() {
+        this.vuelosService.getVuelos().subscribe({
+            next: (data) => {
+                console.log("Vuelos recibidos:", data);
 
-        // ------- DATOS DUMMY (cámbialos cuando uses SQL) -------
-        this.ciudades = [
-            { name: 'Bogotá' },
-            { name: 'Medellín' },
-            { name: 'Cali' },
-            { name: 'Barranquilla' },
-            { name: 'Cartagena' },
-            { name: 'Santa Marta' },
-            { name: 'Pereira' },
-            { name: 'Bucaramanga' },
-            { name: 'Cúcuta' },
-            { name: 'Manizales' }
-        ];
+                // Transformar a formato que p-autoComplete entiende
+                this.ciudades = data.map(v => ({
+                    name: v.nombreDestino,
+                    id: v.id
+                }));
 
-        // // Fechas por defecto
-        // this.fechaIda = new Date();
-        // this.fechaVuelta = new Date(this.fechaIda);
-        // this.fechaVuelta.setDate(this.fechaVuelta.getDate() + 3);
+                // Inicializar listas independientes
+                this.filteredOrigenes = [...this.ciudades];
+                this.filteredDestinos = [...this.ciudades];
+
+                console.log("Ciudades cargadas:", this.ciudades);
+            },
+            error: (err) => {
+                console.error('Error cargando ciudades desde la API:', err);
+            }
+        });
+
+        // Suscribirse al destino seleccionado desde Marketplace
+        this.destinoService.destino$.subscribe(destino => {
+            if (destino) {
+                this.destino = destino; // 👈 actualizamos el autocomplete de destino
+            }
+        });
 
         // Pasajeros
-        this.numeros = Array.from({ length: 8 }, (_, i) => i + 1);
+        this.numeros = Array.from({ length: 8 }, (_, i) => ({
+            label: (i + 1).toString(),
+            value: i + 1
+        }));
     }
 
     // ------- FILTROS AUTOCOMPLETE -------
     filtrarOrigen(event: any) {
-        const query = event.query.toLowerCase();
-        this.filteredOrigenes = this.ciudades.filter(c =>
-            c.name.toLowerCase().includes(query)
-        );
+        const query = event.query || '';
+        this.filteredOrigenes = this.ciudades
+            .filter(c => c.name.toLowerCase().includes(query.toLowerCase()));
     }
 
     filtrarDestino(event: any) {
-        const query = event.query.toLowerCase();
-        this.filteredDestinos = this.ciudades.filter(c =>
-            c.name.toLowerCase().includes(query)
-        );
+        const query = event.query || '';
+        this.filteredDestinos = this.ciudades
+            .filter(c => 
+                c.name.toLowerCase().includes(query.toLowerCase()) &&
+                c !== this.origen
+            );
+    }
+
+    // Reiniciar lista al enfocar input
+    onFocusOrigen() {
+        this.filteredOrigenes = [...this.ciudades];
+    }
+
+    onFocusDestino() {
+        this.filteredDestinos = [...this.ciudades].filter(c => c !== this.origen);
     }
 
     buscar() {

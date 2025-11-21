@@ -1,5 +1,5 @@
 <div class="card">
-    <p-toolbar>
+    <p-toolbar id="toolbar">
         <ng-template #start>
 
             <!-- ORIGEN (nuevo estilo con dropdown) -->
@@ -7,8 +7,11 @@
                 [(ngModel)]="origen"
                 [suggestions]="filteredOrigenes"
                 (completeMethod)="filtrarOrigen($event)"
+                (onFocus)="onFocusOrigen()"
                 field="name"
+                optionLabel="name"
                 [dropdown]="true"
+                [forceSelection]="true"
                 placeholder="Origen"
                 class="mr-3 w-40">
             </p-autoComplete>
@@ -18,8 +21,11 @@
                 [(ngModel)]="destino"
                 [suggestions]="filteredDestinos"
                 (completeMethod)="filtrarDestino($event)"
+                (onFocus)="onFocusDestino()"
                 field="name"
+                optionLabel="name"
                 [dropdown]="true"
+                [forceSelection]="true"
                 placeholder="Destino"
                 class="mr-3 w-40">
             </p-autoComplete>
@@ -48,6 +54,8 @@
             <!-- PASAJEROS -->
             <p-dropdown 
                 [options]="numeros"
+                optionLabel="label"
+                optionValue="value"
                 [(ngModel)]="pasajeros"
                 placeholder="Pasajeros"
                 class="mr-3 w-32">

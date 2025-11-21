@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { NgFor } from '@angular/common';
+
+// Servicios
+import { VuelosService, Vuelo } from '../services/vuelos.service';
+import { DestinoService } from '../services/DestinoService';
 
 @Component({
   selector: 'app-marketplace',
@@ -10,23 +14,39 @@ import { NgFor } from '@angular/common';
   templateUrl: './marketplace.component.html',
   styleUrls: ['./marketplace.component.css']
 })
-export class MarketplaceComponent {
+export class MarketplaceComponent implements OnInit {
 
-  destinosDestacados = [
-    { id_destino: 1, nombre: 'Cartagena', descripcion: 'Playas hermosas y murallas.', imagen_url: 'https://i.imgur.com/mf3R1u8.jpeg' },
-    { id_destino: 2, nombre: 'San Andrés', descripcion: 'Mar de los siete colores.', imagen_url: 'https://i.imgur.com/vQZkHtQ.jpeg' },
-    { id_destino: 3, nombre: 'Medellín', descripcion: 'La ciudad de la eterna primavera.', imagen_url: 'https://i.imgur.com/VXf6k7J.jpeg' },
-    { id_destino: 4, nombre: 'Bogotá', descripcion: 'Cultura, museos y vida nocturna.', imagen_url: 'https://i.imgur.com/cg4b3th.jpeg' },
-    { id_destino: 5, nombre: 'Santa Marta', descripcion: 'Historia, mar y Sierra Nevada.', imagen_url: 'https://i.imgur.com/oFNLdqL.jpeg' },
-    { id_destino: 6, nombre: 'Cali', descripcion: 'La capital de la salsa, alegría y calorcito.', imagen_url: 'https://i.imgur.com/omQZ8Gd.jpeg' }
-  ];
+  destinosDestacados: any[] = [];
 
-  constructor() {}
+  constructor(
+    private vuelosService: VuelosService,
+    private destinoService: DestinoService  // 👈 inyectamos el servicio
+  ) {}
 
-  verDestino(id: number) {
-    console.log('Ver destino', id);
-    // Aquí luego irá navegación a la página del destino
-    // this.router.navigate(['/destino', id]);
+  ngOnInit() {
+    this.vuelosService.getVuelos().subscribe({
+      next: (vuelos: Vuelo[]) => {
+        this.destinosDestacados = vuelos
+          .filter(v => v.destacado)
+          .slice(0,6)
+          .map(v => ({
+            id_destino: v.id,
+            nombre: v.nombreDestino,
+            descripcion: v.descripcion,
+            imagen_url: v.imagenUrl
+          }));
+      },
+      error: (err) => console.error('Error cargando destinos destacados:', err)
+    });
   }
 
+  verDestino(destino: any) {
+    // Enviar destino al toolbar
+    const seleccionado = { name: destino.nombre, id: destino.id_destino };
+    this.destinoService.seleccionarDestino(seleccionado);
+    const toolbar = document.getElementById('toolbar');
+    if (toolbar) {
+      toolbar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 }
