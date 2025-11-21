@@ -1,37 +1,44 @@
 <div class="card">
     <p-toolbar>
         <ng-template #start>
-            <!-- ORIGEN -->
-            <p-dropdown 
-                [options]="ciudades" 
-                [(ngModel)]="origen" 
+
+            <!-- ORIGEN (nuevo estilo con dropdown) -->
+            <p-autoComplete
+                [(ngModel)]="origen"
+                [suggestions]="filteredOrigenes"
+                (completeMethod)="filtrarOrigen($event)"
+                field="name"
+                [dropdown]="true"
                 placeholder="Origen"
-                optionLabel="name"
                 class="mr-3 w-40">
-            </p-dropdown>
+            </p-autoComplete>
 
-            <!-- DESTINO -->
-            <p-dropdown 
-                [options]="ciudades" 
-                [(ngModel)]="destino" 
+            <!-- DESTINO (nuevo estilo con dropdown) -->
+            <p-autoComplete
+                [(ngModel)]="destino"
+                [suggestions]="filteredDestinos"
+                (completeMethod)="filtrarDestino($event)"
+                field="name"
+                [dropdown]="true"
                 placeholder="Destino"
-                optionLabel="name"
                 class="mr-3 w-40">
-            </p-dropdown>
+            </p-autoComplete>
 
-            <!-- FECHA IDA-->
+            <!-- FECHA IDA -->
             <p-calendar 
                 [(ngModel)]="fechaIda"
+                [minDate]="minDate"
                 dateFormat="dd/mm/yy"
                 placeholder="Fecha Ida"
                 appendTo="body"
                 class="mr-3">
             </p-calendar>
 
-            <!-- FECHA VUELTA - se oculta si se selecciona solo ida -->  
+            <!-- FECHA VUELTA -->
             <p-calendar
                 *ngIf="flightType == 'doble'"
                 [(ngModel)]="fechaVuelta"
+                [minDate]="fechaIda || minDate"
                 dateFormat="dd/mm/yy"
                 placeholder="Fecha Vuelta"
                 appendTo="body"
@@ -45,6 +52,7 @@
                 placeholder="Pasajeros"
                 class="mr-3 w-32">
             </p-dropdown>
+
         </ng-template>
 
         <ng-template #end>

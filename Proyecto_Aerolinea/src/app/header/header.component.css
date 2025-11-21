@@ -1,0 +1,8 @@
+:host ::ng-deep .custom-toolbar {
+    background-color: #9d68f1 !important;
+}
+
+
+:host ::ng-deep .big-icon .pi {
+    font-size: 2rem !important;
+}

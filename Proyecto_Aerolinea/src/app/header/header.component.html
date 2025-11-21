@@ -1,19 +1,32 @@
-<h2 style="text-align: center;font-size: 38px; width: 100%; height: 50px; ; margin: 0; background-color: #3b0764; color: white;">Volamos alto, sonamos fuerte</h2>
-<p-toolbar background="{violet700}">
+<h2 style="text-align: center;font-size: 38px; width: 100%; height: 50px; margin: 0; background-color: #3b0764; color: white;">
+    Volamos alto, sonamos fuerte
+</h2>
+
+<p-toolbar>
     <ng-template #start>
-        <p-image src="https://imgur.com/sfpy8I4.png" width="100" (click)="gotoHomePage()"/>
-        <p-image src="https://imgur.com/uYcFyvW.png" width="200" (click)="gotoHomePage()"/>
+        <p-image src="https://imgur.com/sfpy8I4.png" width="100" (click)="gotoHomePage()" />
+        <p-image src="https://imgur.com/uYcFyvW.png" width="200" (click)="gotoHomePage()" />
     </ng-template>
 
     <ng-template #center>
-        <p-button label="Reservar" text severity="secondary"/>
-        <p-button label="Ofertas y destinos" text severity="secondary"/>
-        <p-button label="Tu Reserva" text severity="secondary"/>
-        <p-button label="Información y ayuda" text severity="secondary"/>
-        <p-button label="Lifemiles" text severity="secondary"/>
+        <div style="display: flex; gap: 1rem; justify-content: center; align-items: center;">
+            <p-button label="Reservar" text severity="secondary"/>
+            <p-button label="Destinos" text severity="secondary" />
+            <p-button label="Tu Reserva" text severity="secondary" />
+        </div>
     </ng-template>
 
     <ng-template #end>
-        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" [style]="{ width: '50px', height: '50px'}" (click)="gotoLoginPage()"/>
+
+        <!-- BOTÓN DE USUARIO REDONDO -->
+        <p-button 
+            icon="pi pi-user"
+            styleClass="p-button-rounded p-button-text big-icon"
+            (onClick)="menu.toggle($event)">
+        </p-button>
+
+        <!-- MENÚ EMERGENTE -->
+        <p-menu #menu [popup]="true" [model]="userMenuOptions"></p-menu>
+
     </ng-template>
 </p-toolbar>

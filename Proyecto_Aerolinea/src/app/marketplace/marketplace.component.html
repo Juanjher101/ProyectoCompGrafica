@@ -1,0 +1,65 @@
+<div class="marketplace-container">
+
+  <h2 class="marketplace-title">Destinos destacados</h2>
+
+  <!-- FILA 1 -->
+  <div class="fila-destinos">
+    <div class="col-destino" *ngFor="let destino of destinosDestacados.slice(0,3)">
+      <p-card [style]="{ width: '20rem', overflow: 'hidden' }">
+
+        <!-- FOTO -->
+        <ng-template #header>
+          <img [src]="destino.imagen_url" alt="{{ destino.nombre }}" class="destino-img"/>
+        </ng-template>
+
+        <!-- NOMBRE -->
+        <ng-template #title>{{ destino.nombre }}</ng-template>
+
+        <!-- DESCRIPCIÓN -->
+        <p>{{ destino.descripcion }}</p>
+
+        <!-- BOTÓN -->
+        <ng-template #footer>
+          <p-button 
+            label="Viajar"
+            severity="secondary"
+            styleClass="w-full"
+            (onClick)="verDestino(destino.id_destino)">
+          </p-button>
+        </ng-template>
+
+      </p-card>
+    </div>
+  </div>
+
+  <!-- FILA 2 -->
+  <div class="fila-destinos">
+    <div class="col-destino" *ngFor="let destino of destinosDestacados.slice(3,6)">
+      <p-card [style]="{ width: '20rem', overflow: 'hidden' }">
+
+        <!-- FOTO -->
+        <ng-template #header>
+          <img [src]="destino.imagen_url" alt="{{ destino.nombre }}" class="destino-img"/>
+        </ng-template>
+
+        <!-- NOMBRE -->
+        <ng-template #title>{{ destino.nombre }}</ng-template>
+
+        <!-- DESCRIPCIÓN -->
+        <p>{{ destino.descripcion }}</p>
+
+        <!-- BOTÓN -->
+        <ng-template #footer>
+          <p-button 
+            label="Viajar"
+            severity="secondary"
+            styleClass="w-full"
+            (onClick)="verDestino(destino.id_destino)">
+          </p-button>
+        </ng-template>
+
+      </p-card>
+    </div>
+  </div>
+
+</div>

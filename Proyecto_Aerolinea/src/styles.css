@@ -1,10 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Walter+Turncoat&display=swap');
+@import "primeicons/primeicons.css";
+
 body {
   font-family: 'Walter Turncoat', cursive !important;
   font-style: normal;
-  background-color:#dedbf5 ;
+  color: black;
+  /* background-color:#dedbf5 ; */
 }
 .p-component {
   font-family: 'Walter Turncoat', cursive !important;
   font-style: normal;
+  color: black;
+}
+
+
+.p-button .p-button-label {
+    color: rgb(0, 0, 0) !important;   
+}
+
+.p-button{
+  background-color: #a44de6 !important;
+}
+
+.p-button:hover {
+  background-color: white !important;
+}
+
+.p-button:active {
+  background-color: white !important;
+}
+
+.pi {
+  color: #000000 !important; /* morado */
 }

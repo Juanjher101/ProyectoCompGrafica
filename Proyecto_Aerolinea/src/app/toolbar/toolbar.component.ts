@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+// PrimeNG
 import { Toolbar } from 'primeng/toolbar';
-import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { ButtonModule } from 'primeng/button';
-import { FormsModule } from '@angular/forms';
-import { Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { DropdownModule } from 'primeng/dropdown';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 @Component({
     selector: 'app-toolbar',
@@ -13,29 +15,40 @@ import { CommonModule } from '@angular/common';
     standalone: true,
     imports: [
         Toolbar,
-        DropdownModule,
         CalendarModule,
         ButtonModule,
+        DropdownModule,
+        AutoCompleteModule,
         FormsModule,
         CommonModule
     ]
 })
-
-
 export class ToolbarBasicDemo implements OnInit {
 
-    ciudades: any[] = [];
-    numeros: any[] = [];
+    // Datos principales
+    origen: any = null;
+    destino: any = null;
 
-    origen: any;
-    destino: any;
-    fechaIda: Date = new Date();
-    fechaVuelta: Date = new Date();
-    pasajeros: number | undefined;;
+    fechaIda: Date | null = null;
+    fechaVuelta: Date | null = null;
+
+    pasajeros: number | undefined;
 
     @Input() flightType: string = 'doble';
 
+    //Validar:
+    minDate: Date = new Date();
+
+    // Listas
+    ciudades: any[] = [];
+    filteredOrigenes: any[] = [];
+    filteredDestinos: any[] = [];
+
+    numeros: any[] = [];
+
     ngOnInit() {
+
+        // ------- DATOS DUMMY (cámbialos cuando uses SQL) -------
         this.ciudades = [
             { name: 'Bogotá' },
             { name: 'Medellín' },
@@ -49,19 +62,35 @@ export class ToolbarBasicDemo implements OnInit {
             { name: 'Manizales' }
         ];
 
-        this.fechaIda = new Date();
+        // // Fechas por defecto
+        // this.fechaIda = new Date();
+        // this.fechaVuelta = new Date(this.fechaIda);
+        // this.fechaVuelta.setDate(this.fechaVuelta.getDate() + 3);
 
-        this.fechaVuelta = new Date(this.fechaIda); // copiar fecha
-        this.fechaVuelta.setDate(this.fechaVuelta.getDate() + 3);
+        // Pasajeros
+        this.numeros = Array.from({ length: 8 }, (_, i) => i + 1);
+    }
 
-        this.numeros = Array.from({ length: 10 }, (_, i) => i + 1);
+    // ------- FILTROS AUTOCOMPLETE -------
+    filtrarOrigen(event: any) {
+        const query = event.query.toLowerCase();
+        this.filteredOrigenes = this.ciudades.filter(c =>
+            c.name.toLowerCase().includes(query)
+        );
+    }
+
+    filtrarDestino(event: any) {
+        const query = event.query.toLowerCase();
+        this.filteredDestinos = this.ciudades.filter(c =>
+            c.name.toLowerCase().includes(query)
+        );
     }
 
     buscar() {
         console.log("Origen:", this.origen);
         console.log("Destino:", this.destino);
         console.log("Fecha Ida:", this.fechaIda);
-        console.log("Fecha Vuelta:", this.fechaVuelta)
+        console.log("Fecha Vuelta:", this.fechaVuelta);
         console.log("Pasajeros:", this.pasajeros);
     }
 }
