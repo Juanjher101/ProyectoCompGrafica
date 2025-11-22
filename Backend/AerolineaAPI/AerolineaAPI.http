@@ -1,0 +1,6 @@
+@AerolineaAPI_HostAddress = http://localhost:5286
+
+GET {{AerolineaAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

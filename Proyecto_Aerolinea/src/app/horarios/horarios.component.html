@@ -2,6 +2,10 @@
 
 <h1 style="text-align:center; font-size:2rem; margin:2rem 0;">Selecciona tu horario de vuelo</h1>
 
+
+<h1 *ngIf="busqueda">Horarios disponibles {{ busqueda.origen?.name }} → {{ busqueda.destino?.name }} </h1>
+
+
 <p-accordion>
   <p-accordionTab *ngFor="let horario of horarios"
                   [header]="'Salida: ' + horario.horaSalida + ' - Llegada: ' + horario.horaLlegada"
@@ -25,3 +29,11 @@
 
   </p-accordionTab>
 </p-accordion>
+
+<p style="text-align:center; margin: 2rem 0;">
+  <p-button 
+    label="Siguiente →" 
+    styleClass="p-button-rounded p-button-lg" 
+    (onClick)="irAPasajeros()">
+  </p-button>
+</p>

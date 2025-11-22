@@ -5,6 +5,9 @@ import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import { TooltipModule } from 'primeng/tooltip';
 import { HeaderComponent } from "../header/header.component";
+import { Router } from '@angular/router';
+import { DestinoService } from '../services/DestinoService';
+
 
 @Component({
   selector: 'app-horarios',
@@ -16,10 +19,29 @@ import { HeaderComponent } from "../header/header.component";
 export class HorariosComponent implements OnInit {
 
   horarios: any[] = []; // Datos temporales
+  busqueda: any = null; 
 
-  constructor() {}
+  constructor(
+    private destinoService: DestinoService,
+    private router: Router) {}
 
   ngOnInit(): void {
+
+    // 1️⃣ Intentar leer desde el servicio (mientras no recargues)
+  this.busqueda = this.destinoService.obtenerBusqueda();
+
+    // 2️⃣ Si el servicio está vacío, usar localStorage
+    if (!this.busqueda) {
+      const guardado = localStorage.getItem('busqueda');
+      if (guardado) {
+        this.busqueda = JSON.parse(guardado);
+      }
+    }
+
+    console.log("Datos recibidos en horarios:", this.busqueda);
+    
+
+    
     this.horarios = [
       {
         horaSalida: '08:00',
@@ -106,8 +128,32 @@ export class HorariosComponent implements OnInit {
   }
 
   seleccionarVuelo(vuelo: any) {
-    console.log('Vuelo seleccionado:', vuelo);
-    // Guardar en servicio temporal o redirigir
+  console.log('Vuelo seleccionado:', vuelo);
+
+  // Guardar el vuelo
+  localStorage.setItem('vueloSeleccionado', JSON.stringify(vuelo));
+
+  // Guardar el vuelo también en el servicio si quieres tenerlo en memoria
+  this.destinoService.seleccionarDestino(vuelo);
+
+  console.log("Vuelo guardado correctamente.");
   }
 
+  irAPasajeros() {
+
+  // Guardar la búsqueda actual
+  if (this.busqueda) {
+    localStorage.setItem('busqueda', JSON.stringify(this.busqueda));
+    this.destinoService.guardarBusqueda(this.busqueda);
+  }
+
+  // Guardar vuelo seleccionado
+  const vuelo = localStorage.getItem('vueloSeleccionado');
+  if (vuelo) {
+    this.destinoService.seleccionarDestino(JSON.parse(vuelo));
+  }
+
+  // Navegar a la página de pasajeros
+  this.router.navigate(['/pasajeros']);
+  }
 }

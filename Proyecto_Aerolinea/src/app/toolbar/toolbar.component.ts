@@ -120,26 +120,23 @@ export class ToolbarBasicDemo implements OnInit {
     }
 
     buscar() {
-    console.log("Origen:", this.origen);
-    console.log("Destino:", this.destino);
-    console.log("Fecha Ida:", this.fechaIda);
-    console.log("Fecha Vuelta:", this.fechaVuelta);
-    console.log("Pasajeros:", this.pasajeros);
-
     if (this.origen && this.destino && this.fechaIda) {
-        // Opcional: guardar los datos en el servicio temporal
-        this.destinoService.guardarBusqueda({
+        
+        const datos = {
             origen: this.origen,
             destino: this.destino,
             fechaIda: this.fechaIda,
             fechaVuelta: this.fechaVuelta,
             pasajeros: this.pasajeros
-        });
+        };
 
-        // Navegar a la página de horarios
+        localStorage.setItem('busqueda', JSON.stringify(datos));
+        this.destinoService.guardarBusqueda(datos);
+
         this.router.navigate(['/horas']);
     } else {
         alert('Por favor, completa origen, destino y fecha de ida.');
     }
 }
 }
+
