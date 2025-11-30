@@ -1,75 +1,75 @@
 <div class="card">
-    <p-toolbar id="toolbar">
-        <ng-template #start>
+  <p-toolbar id="toolbar">
+    <ng-template #start>
 
-            <!-- ORIGEN (nuevo estilo con dropdown) -->
-            <p-autoComplete
-                [(ngModel)]="origen"
-                [suggestions]="filteredOrigenes"
-                (completeMethod)="filtrarOrigen($event)"
-                (onFocus)="onFocusOrigen()"
-                field="name"
-                optionLabel="name"
-                [dropdown]="true"
-                [forceSelection]="true"
-                placeholder="Origen"
-                class="mr-3 w-40">
-            </p-autoComplete>
+      <!-- ORIGEN -->
+      <p-autoComplete
+        [(ngModel)]="origen"
+        [suggestions]="filteredOrigenes"
+        (completeMethod)="filtrarOrigen($event)"
+        (onFocus)="onFocusOrigen()"
+        field="name"
+        optionLabel="name"
+        [dropdown]="true"
+        [forceSelection]="true"
+        placeholder="Origen"
+        class="mr-3 w-40">
+      </p-autoComplete>
 
-            <!-- DESTINO (nuevo estilo con dropdown) -->
-            <p-autoComplete
-                [(ngModel)]="destino"
-                [suggestions]="filteredDestinos"
-                (completeMethod)="filtrarDestino($event)"
-                (onFocus)="onFocusDestino()"
-                field="name"
-                optionLabel="name"
-                [dropdown]="true"
-                [forceSelection]="true"
-                placeholder="Destino"
-                class="mr-3 w-40">
-            </p-autoComplete>
+      <!-- DESTINO -->
+      <p-autoComplete
+        [(ngModel)]="destino"
+        [suggestions]="filteredDestinos"
+        (completeMethod)="filtrarDestino($event)"
+        (onFocus)="onFocusDestino()"
+        field="name"
+        optionLabel="name"
+        [dropdown]="true"
+        [forceSelection]="true"
+        placeholder="Destino"
+        class="mr-3 w-40">
+      </p-autoComplete>
 
-            <!-- FECHA IDA -->
-            <p-calendar 
-                [(ngModel)]="fechaIda"
-                [minDate]="minDate"
-                dateFormat="dd/mm/yy"
-                placeholder="Fecha Ida"
-                appendTo="body"
-                class="mr-3">
-            </p-calendar>
+      <!-- FECHA IDA -->
+      <p-date-picker 
+        [(ngModel)]="fechaIda"
+        [minDate]="minDate"
+        [locale]="locale"
+        dateFormat="dd/mm/yy"
+        placeholder="Fecha Ida"
+        class="mr-3">
+      </p-date-picker>
 
-            <!-- FECHA VUELTA -->
-            <p-calendar
-                *ngIf="flightType == 'doble'"
-                [(ngModel)]="fechaVuelta"
-                [minDate]="fechaIda || minDate"
-                dateFormat="dd/mm/yy"
-                placeholder="Fecha Vuelta"
-                appendTo="body"
-                class="mr-3">
-            </p-calendar>
+      <!-- FECHA VUELTA -->
+      <!-- <p-date-picker
+        *ngIf="flightType === 'doble'"
+        [(ngModel)]="fechaVuelta"
+        [minDate]="fechaIda || minDate"
+        [locale]="locale"
+        dateFormat="dd/mm/yy"
+        placeholder="Fecha Vuelta"
+        class="mr-3">
+      </p-date-picker> -->
 
-            <!-- PASAJEROS -->
-            <p-dropdown 
-                [options]="numeros"
-                optionLabel="label"
-                optionValue="value"
-                [(ngModel)]="pasajeros"
-                placeholder="Pasajeros"
-                class="mr-3 w-32">
-            </p-dropdown>
+      <!-- PASAJEROS -->
+      <!-- <p-dropdown 
+        [options]="numeros"
+        optionLabel="label"
+        optionValue="value"
+        [(ngModel)]="pasajeros"
+        placeholder="Pasajeros"
+        class="mr-3 w-32">
+      </p-dropdown>  -->
 
-        </ng-template>
+    </ng-template>
 
-        <ng-template #end>
-            <p-button 
-                label="Buscar" 
-                icon="pi pi-search"
-                severity="primary"
-                (onClick)="buscar()">
-            </p-button>
-        </ng-template>
-    </p-toolbar>
+    <ng-template #end>
+      <p-button 
+        label="Buscar" 
+        icon="pi pi-search"
+        severity="primary"
+        (onClick)="buscar()">
+      </p-button>
+    </ng-template>
+  </p-toolbar>
 </div>

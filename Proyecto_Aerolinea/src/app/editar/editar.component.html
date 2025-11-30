@@ -1,0 +1,59 @@
+<app-header></app-header>
+
+<div style="width: 60%; max-width: 600px; margin: 80px auto; display:flex; flex-direction:column; gap: 2rem; border: 3px solid #919191; padding: 2rem;">
+
+  <p-card header="Editar Perfil">
+    <form [formGroup]="perfilForm" (ngSubmit)="onUpdate()" style="display:flex; flex-direction:column; gap:1.5rem;">
+
+      <!-- Nombre -->
+      <div>
+        <label>Nombre:</label>
+        <input pInputText type="text" formControlName="nombre" placeholder="Nombres" style="width:100%; padding:0.5rem; font-size:1rem;" />
+        <p-message *ngIf="perfilForm.get('nombre')?.invalid && perfilForm.get('nombre')?.touched" severity="error" text="Nombre obligatorio"></p-message>
+      </div>
+
+      <!-- Apellido -->
+      <div>
+        <label>Apellido:</label>
+        <input pInputText type="text" formControlName="apellido" placeholder="Apellidos" style="width:100%; padding:0.5rem; font-size:1rem;" />
+        <p-message *ngIf="perfilForm.get('apellido')?.invalid && perfilForm.get('apellido')?.touched" severity="error" text="Apellido obligatorio"></p-message>
+      </div>
+
+      <!-- Teléfono -->
+      <div>
+        <label>Teléfono:</label>
+        <input pInputText type="text" formControlName="telefono" placeholder="Número de teléfono" style="width:100%; padding:0.5rem; font-size:1rem;" />
+        <p-message *ngIf="perfilForm.get('telefono')?.invalid && perfilForm.get('telefono')?.touched" severity="error" text="Teléfono inválido (10 dígitos)"></p-message>
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label>Email:</label>
+        <input pInputText type="email" formControlName="email" placeholder="correo@example.com" style="width:100%; padding:0.5rem; font-size:1rem;" />
+        <p-message *ngIf="perfilForm.get('email')?.invalid && perfilForm.get('email')?.touched" severity="error" text="Email inválido"></p-message>
+      </div>
+
+      <!-- Contraseña -->
+      <div>
+        <label>Contraseña:</label>
+        <p-password formControlName="password" toggleMask="true" [feedback]="true" placeholder="Nueva contraseña"></p-password>
+        <p-message *ngIf="perfilForm.get('password')?.invalid && perfilForm.get('password')?.touched" severity="error" text="Contraseña debe tener al menos 6 caracteres"></p-message>
+      </div>
+
+      <!-- Confirmar contraseña -->
+      <div>
+        <label>Confirmar contraseña:</label>
+        <p-password formControlName="confirmPassword" toggleMask="true" [feedback]="false" placeholder="Repetir contraseña"></p-password>
+        <p-message *ngIf="perfilForm.get('confirmPassword')?.invalid && perfilForm.get('confirmPassword')?.touched" severity="error" text="Contraseñas no coinciden"></p-message>
+      </div>
+
+      <!-- Botón actualizar -->
+      <p-button label="Actualizar Perfil" type="submit" [loading]="loading" [disabled]="perfilForm.invalid || loading"></p-button>
+
+      <!-- Botón eliminar -->
+      <p-button label="Eliminar Cuenta" type="button" [loading]="loadingDelete" (click)="confirmDelete()"></p-button>
+
+    </form>
+  </p-card>
+
+</div>

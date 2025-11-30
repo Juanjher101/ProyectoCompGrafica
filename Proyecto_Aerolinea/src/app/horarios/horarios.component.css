@@ -5,10 +5,11 @@
   gap: 1rem; /* espacio entre cards */
 }
 
+
 .vuelo-card {
   width: 18rem; /* todas del mismo tamaño */
   min-height: 260px;
-  box-shadow: 0 4px 8px rgba(73, 9, 73, 0.2); /* sombra ligera violeta */
+  box-shadow: 0 4px 8px rgb(0, 0, 0); /* sombra ligera violeta */
   border-radius: 8px;
   padding: 0.5rem;
   transition: transform 0.2s;
@@ -47,4 +48,60 @@
   font-weight: bold;
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
+}
+
+
+/* clase aplicada al host p-button */
+.p-button.btn-seleccionado {
+  background-color: white !important;
+  color: black !important;
+  border: 2px solid #a44de6 !important;
+}
+
+/* etiqueta interna de texto */
+/* .p-button.btn-seleccionado .p-button-label {
+  color: black !important;
+  font-weight: 600 !important;
+} */
+
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+
+  margin-bottom: 2rem; 
+  font-size:1.3rem; 
+  text-align:center; 
+  box-shadow: 0 4px 8px rgba(70, 70, 70, 0.622); 
+  /* border-radius: 8px;  */
+  padding:1rem;
+  background-color:#f5f0fa;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.avion {
+  font-size: 1.4rem;
+}
+
+.header-right {
+  font-weight: bold;
+  color: #6a1b9a; /* moradito bonito */
+}
+
+
+.footer-mini {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
 }

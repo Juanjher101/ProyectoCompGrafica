@@ -7,7 +7,15 @@ import { TooltipModule } from 'primeng/tooltip';
 import { HeaderComponent } from "../header/header.component";
 import { Router } from '@angular/router';
 import { DestinoService } from '../services/DestinoService';
+import { HorariosService, TipoVuelo, Horario } from '../services/HorariosService';
 
+interface VueloCard {
+  tipo: string;
+  descripcion: string[];
+  precio: number;
+  asientos: number;
+  equipaje: number;
+}
 
 @Component({
   selector: 'app-horarios',
@@ -18,142 +26,120 @@ import { DestinoService } from '../services/DestinoService';
 })
 export class HorariosComponent implements OnInit {
 
-  horarios: any[] = []; // Datos temporales
-  busqueda: any = null; 
+  horarios: Array<{
+    idHorario: string;
+    horaSalida: string;
+    horaLlegada: string;
+    vuelos: VueloCard[];
+  }> = [];
+
+  busqueda: any = null;
+  vueloSeleccionado: any = null;
+
+
 
   constructor(
     private destinoService: DestinoService,
-    private router: Router) {}
+    private horariosService: HorariosService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
+    // Obtener info de búsqueda (origen/destino/ruta)
+    this.busqueda = this.destinoService.obtenerBusqueda() || JSON.parse(localStorage.getItem('busqueda') || 'null');
+    console.log("Datos recibidos en horarios:", this.busqueda);
 
-    // 1️⃣ Intentar leer desde el servicio (mientras no recargues)
-  this.busqueda = this.destinoService.obtenerBusqueda();
+    if (!this.busqueda?.rutaId) return; // Si no hay ruta, no hacemos nada
 
-    // 2️⃣ Si el servicio está vacío, usar localStorage
-    if (!this.busqueda) {
-      const guardado = localStorage.getItem('busqueda');
-      if (guardado) {
-        this.busqueda = JSON.parse(guardado);
-      }
+    // Traer horarios, tipos de vuelo y rutas en paralelo
+    this.horariosService.getHorarios().subscribe(horariosApi => {
+      this.horariosService.getTiposVuelo().subscribe(tiposVuelo => {
+        this.horariosService.getRutas().subscribe(rutas => {
+
+          // Encontrar la ruta seleccionada para obtener precioBase
+          const rutaSeleccionada = rutas.find(r => r.idRuta.toString() === this.busqueda.rutaId.toString());
+          const precioBase = rutaSeleccionada?.precioBase || 0;
+
+          // Filtrar solo los horarios de la ruta seleccionada
+          const horariosFiltrados = horariosApi.filter(h => h.idRuta.trim() === (this.busqueda.rutaId || '').trim());
+
+
+          this.horarios = horariosFiltrados.map(h => {
+          return {
+            idHorario: h.idHorario,
+            horaSalida: h.horaSalida,
+            horaLlegada: h.horaLlegada,
+            vuelos: tiposVuelo.map(t => {
+              // Parsear descripción de JSON a array de strings
+              let descripcionArray: string[] = [];
+              try {
+                descripcionArray = JSON.parse(t.descripcion);
+              } catch (e) {
+                console.error('Error parseando descripcion:', t.descripcion, e);
+                descripcionArray = [t.descripcion]; // fallback si no es JSON válido
+              }
+
+              return {
+                tipo: t.nombre,
+                descripcion: descripcionArray,
+                precio: this.horariosService.calcularPrecio(precioBase, t.multiplicador),
+                asientos: h.asientosDisponibles,
+                equipaje: t.nombre === 'Económico' ? 1 : t.nombre === 'Clásico' ? 2 : 3
+              };
+            })
+          };
+        });
+
+        console.log("Horarios procesados para mostrar:", this.horarios);
+        });
+      });
+    });
+  }
+
+  seleccionarVuelo(vuelo: VueloCard, horarioId: string, horaSalida: string, horaLlegada: string) {
+    console.log('Vuelo seleccionado:', vuelo);
+
+    const seleccion = {
+      vueloTipo: vuelo.tipo,
+      descripcion: vuelo.descripcion,
+      precio: vuelo.precio,
+      horarioId,
+      horaSalida,
+      horaLlegada,
+      asientos: vuelo.asientos,
+      equipaje: vuelo.equipaje
+    };
+
+    localStorage.setItem('vueloSeleccionado', JSON.stringify(seleccion));
+    this.destinoService.seleccionarDestino(seleccion);
+    console.log("Vuelo guardado correctamente.");
+
+    this.vueloSeleccionado = (seleccion.vueloTipo || '').toString().trim();
+    console.log('vueloSeleccionado (string):', this.vueloSeleccionado);
+  }
+
+  irAHome() {
+  // Limpiar datos de asientos seleccionados
+  localStorage.removeItem('vueloSeleccionado');
+
+  // Opcional: si quieres también borrar cualquier otro dato relacionado
+  // localStorage.removeItem('busqueda');
+
+  // Volver a la página anterior (por ejemplo, selección de vuelo)
+  this.router.navigate(['/home']);
+  }
+
+  irAAsientos() {
+    if (!this.vueloSeleccionado) {
+    alert("Debes seleccionar un vuelo antes de continuar.");
+    return;
     }
 
-    console.log("Datos recibidos en horarios:", this.busqueda);
-    
 
-    
-    this.horarios = [
-      {
-        horaSalida: '08:00',
-        horaLlegada: '10:30',
-        vuelos: [
-          { 
-            tipo: 'Económico', 
-            descripcion: 'Vuelo básico: sin comida incluida, equipaje de mano 1, asientos estándar. Ideal para viajes cortos y presupuesto limitado.', 
-            precio: 150, 
-            asientos: 120, 
-            equipaje: 1 
-          },
-          { 
-            tipo: 'Moderado', 
-            descripcion: 'Vuelo estándar: incluye comida ligera, selección de asiento, equipaje 2 piezas. Perfecto para quienes buscan comodidad media.', 
-            precio: 200, 
-            asientos: 100, 
-            equipaje: 2 
-          },
-          { 
-            tipo: 'Costoso', 
-            descripcion: 'Vuelo premium: acceso a lounge, prioridad de embarque, comida completa, equipaje 3 piezas. Mayor comodidad y servicios adicionales.', 
-            precio: 300, 
-            asientos: 50, 
-            equipaje: 3 
-          }
-        ]
-      },
-      {
-        horaSalida: '12:30',
-        horaLlegada: '15:00',
-        vuelos: [
-          { 
-            tipo: 'Económico', 
-            descripcion: 'Vuelo básico: sin comida incluida, equipaje de mano 1, asientos estándar. Ideal para viajes cortos y presupuesto limitado.', 
-            precio: 180, 
-            asientos: 120, 
-            equipaje: 1 
-          },
-          { 
-            tipo: 'Moderado', 
-            descripcion: 'Vuelo estándar: incluye comida ligera, selección de asiento, equipaje 2 piezas. Perfecto para quienes buscan comodidad media.', 
-            precio: 230, 
-            asientos: 100, 
-            equipaje: 2 
-          },
-          { 
-            tipo: 'Costoso', 
-            descripcion: 'Vuelo premium: acceso a lounge, prioridad de embarque, comida completa, equipaje 3 piezas. Mayor comodidad y servicios adicionales.', 
-            precio: 350, 
-            asientos: 50, 
-            equipaje: 3 
-          }
-        ]
-      },
-      {
-        horaSalida: '17:45',
-        horaLlegada: '20:15',
-        vuelos: [
-          { 
-            tipo: 'Económico', 
-            descripcion: 'Vuelo básico: sin comida incluida, equipaje de mano 1, asientos estándar. Ideal para viajes cortos y presupuesto limitado.', 
-            precio: 200, 
-            asientos: 120, 
-            equipaje: 1 
-          },
-          { 
-            tipo: 'Moderado', 
-            descripcion: 'Vuelo estándar: incluye comida ligera, selección de asiento, equipaje 2 piezas. Perfecto para quienes buscan comodidad media.', 
-            precio: 250, 
-            asientos: 100, 
-            equipaje: 2 
-          },
-          { 
-            tipo: 'Costoso', 
-            descripcion: 'Vuelo premium: acceso a lounge, prioridad de embarque, comida completa, equipaje 3 piezas. Mayor comodidad y servicios adicionales.', 
-            precio: 400, 
-            asientos: 50, 
-            equipaje: 3 
-          }
-        ]
-      }
-    ];
-  }
-
-  seleccionarVuelo(vuelo: any) {
-  console.log('Vuelo seleccionado:', vuelo);
-
-  // Guardar el vuelo
-  localStorage.setItem('vueloSeleccionado', JSON.stringify(vuelo));
-
-  // Guardar el vuelo también en el servicio si quieres tenerlo en memoria
-  this.destinoService.seleccionarDestino(vuelo);
-
-  console.log("Vuelo guardado correctamente.");
-  }
-
-  irAPasajeros() {
-
-  // Guardar la búsqueda actual
-  if (this.busqueda) {
-    localStorage.setItem('busqueda', JSON.stringify(this.busqueda));
-    this.destinoService.guardarBusqueda(this.busqueda);
-  }
-
-  // Guardar vuelo seleccionado
-  const vuelo = localStorage.getItem('vueloSeleccionado');
-  if (vuelo) {
-    this.destinoService.seleccionarDestino(JSON.parse(vuelo));
-  }
-
-  // Navegar a la página de pasajeros
-  this.router.navigate(['/pasajeros']);
+    if (this.busqueda) {
+      localStorage.setItem('busqueda', JSON.stringify(this.busqueda));
+      this.destinoService.guardarBusqueda(this.busqueda);
+    }
+    this.router.navigate(['/asientos']);
   }
 }

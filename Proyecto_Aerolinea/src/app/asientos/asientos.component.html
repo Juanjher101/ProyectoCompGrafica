@@ -1,0 +1,124 @@
+<app-header></app-header>
+<h1 style="text-align:center; font-size:2rem; margin:2rem 0;">Selecciona tu asiento</h1>
+<h1 style="font-size:2rem; margin:2rem 0;">Los asientos se muestran en orden: Económico-Clásico-Plus</h1>
+
+<div style="border: 5px solid #535254; border-radius: 8px; padding-bottom: 100px;" class="layout-seats">
+    <h4 style="text-align:center;">
+        CABINA 
+        <i class="pi pi-user" style="font-size: 1.5rem"></i>
+        <i class="pi pi-user" style="font-size: 1.5rem"></i>
+    </h4>
+  <!-- GRID DE ASIENTOS -->
+  <div class="seat-grid-container" *ngIf="!loading">
+    <div *ngFor="let fila of filas" class="seat-row">
+
+      <!-- LADO IZQUIERDO -->
+      <ng-container *ngFor="let col of columnasIzquierda">
+        <ng-container *ngIf="getAsiento(fila, col) as asiento">
+          <p-button 
+            [label]="asiento.fila + asiento.columna"
+            [rounded]="true"
+            [styleClass]="selectedSeat === asiento.idAsiento ? 'btn-seleccionado seat-btn big-seat' : 'seat-btn big-seat'"
+            [ngClass]="{
+                'ocupado': asiento.estado
+            }"
+            (click)="seleccionar(asiento)"
+            [disabled]="asiento.estado"
+            pTooltip="
+                <ul >
+                <li><strong>Fila:</strong> {{asiento.fila}}</li>
+                <li><strong>Columna:</strong> {{asiento.columna}}</li>
+                <li><strong>Tipo:</strong> {{asiento.tipoAsiento}}</li>
+                <li><strong>Precio:</strong> &nbsp; {{asiento.precioAdicional | currency:'COP'}}</li>
+                </ul>"
+            tooltipPosition="top"
+            [tooltipOptions]="{ escape: false, showDelay: 200, hideDelay: 200 }"
+            tooltipEvent="hover"
+            tooltipAppendTo="body"
+            >
+          </p-button>
+        </ng-container>
+      </ng-container>
+
+      <div class="aisle"></div>
+
+      <!-- LADO DERECHO -->
+      <ng-container *ngFor="let col of columnasDerecha">
+        <ng-container *ngIf="getAsiento(fila, col) as asiento">
+          <p-button 
+            [label]="asiento.fila + asiento.columna"
+            [rounded]="true"
+            [styleClass]="selectedSeat === asiento.idAsiento ? 'btn-seleccionado seat-btn big-seat' : 'seat-btn big-seat'"
+            [ngClass]="{
+                'ocupado': asiento.estado
+            }"
+            (click)="seleccionar(asiento)"
+            [disabled]="asiento.estado"
+            pTooltip="
+                <ul>
+                <li><strong>Fila:</strong> {{asiento.fila}}</li>
+                <li><strong>Columna:</strong> {{asiento.columna}}</li>
+                <li><strong>Tipo:</strong> {{asiento.tipoAsiento}}</li>
+                <li><strong>Precio:</strong> &nbsp; {{asiento.precioAdicional | currency:'COP'}}</li>
+                </ul>"
+            tooltipPosition="top"
+            [tooltipOptions]="{ escape: false, showDelay: 200, hideDelay: 200 }"
+            tooltipEvent="hover"
+            tooltipAppendTo="body"
+            >
+          </p-button>
+        </ng-container>
+      </ng-container>
+
+    </div>
+  </div>
+
+  <!-- INFO FLOATING BOX -->
+  <div class="floating-info">
+    <h3>🛫 Resumen</h3>
+    <p><strong>Origen:</strong> {{ busqueda?.origen?.name }}</p>
+    <p><strong>Destino:</strong> {{ busqueda?.destino?.name }}</p>
+    <hr>
+    <p *ngIf="selectedSeat">
+      <strong>Asiento seleccionado:</strong>
+      <br>
+      {{ getAsientoSeleccionado()?.fila }}{{ getAsientoSeleccionado()?.columna }} ({{ getAsientoSeleccionado()?.tipoAsiento }}) 
+      <br>
+      <strong>Precio:</strong> {{ getAsientoSeleccionado()?.precioAdicional}}
+    </p>
+    <p *ngIf="!selectedSeat" style="opacity: 0.6;">Selecciona un asiento…</p>
+  </div>
+
+
+
+
+  <div *ngIf="loading" style="text-align:center; margin-top: 2rem;">
+    <p>Cargando asientos...</p>
+  </div>
+
+</div>
+
+<!-- FOOTER FIJO CON TOTAL Y PAGO -->
+<div class="footer-total" >
+  <div class="total-info" style="display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto;">
+      <!-- Botón Volver -->
+      <p-button 
+        label="← Volver" 
+        styleClass="p-button-rounded " 
+        (onClick)="volver()">
+      </p-button>
+
+      <!-- Total -->
+      <span class="texto">
+        <strong>Total a pagar:</strong> 
+        {{ calcularTotal() | currency:'COP' }}
+      </span>
+
+      <!-- Botón Pagar -->
+      <p-button 
+        label="Pagar →" 
+        styleClass="p-button-rounded " 
+        (onClick)="irAPago()">
+      </p-button>
+  </div>
+</div>

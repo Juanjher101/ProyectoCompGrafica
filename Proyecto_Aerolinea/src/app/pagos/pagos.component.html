@@ -1,0 +1,87 @@
+<app-header></app-header>
+
+<h1 style="font-size:2rem; margin:2rem 0;">Pagar y confirmar reserva</h1>
+
+<div style="width: 80%; display:flex; margin: 80px auto; gap: 2rem; border: 3px solid #919191; padding: 2rem;">
+
+  <!-- FORMULARIO DE PAGO -->
+  <div class="formulario" style="flex: 1;">
+    <h3>Método de pago</h3>
+
+    <div *ngFor="let banco of bancos" class="p-field-radiobutton">
+      <p-radioButton name="banco" [(ngModel)]="bancoSeleccionado" [value]="banco.code"></p-radioButton>
+      <label>{{banco.name}}</label>
+    </div>
+
+    <h4>Información del pago</h4>
+    <div class="p-fluid">
+      <div class="p-field">
+        <label>Nombre del titular:     </label>
+        <input style="width: 300px;" pInputText [(ngModel)]="nombreTitular" placeholder="Nombre completo"/>
+      </div>
+
+      <!-- Tarjeta -->
+      <div *ngIf="requiereTarjeta">
+        <div class="p-field">
+          <label>Número de tarjeta:     </label>
+          <input style="width: 250px;" pInputText [(ngModel)]="numeroTarjeta" placeholder="XXXX-XXXX-XXXX-XXXX"/>
+        </div>
+        <div class="p-field p-grid">
+          <div class="p-col-6">
+            <label>Fecha expiración:     </label>
+            <input style="width: 250px;" pInputText [(ngModel)]="fechaExpiracion" placeholder="MM/AA"/>
+          </div>
+          <div class="p-col-6">
+            <label>CVV:      </label>
+            <input style="width: 150px;" pInputText [(ngModel)]="cvv" placeholder="XXX"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nequi / Daviplata -->
+      <div *ngIf="requiereCuenta">
+        <div class="p-field">
+          <label>Número de cuenta (teléfono):     </label>
+          <input style="width: 230px;" pInputText [(ngModel)]="numeroCuenta" placeholder="Número de teléfono"/>
+        </div>
+      </div>
+
+      <!-- PSE -->
+      <div *ngIf="requierePSE">
+        <div class="p-field">
+          <label>Correo:     </label>
+          <input style="width: 300px;" pInputText [(ngModel)]="correo" placeholder="correo@ejemplo.com"/>
+        </div>
+        <div class="p-field">
+          <label>Entidad bancaria:     </label>
+          <input style="width: 200px;" pInputText [(ngModel)]="entidad" placeholder="Entidad"/>
+        </div>
+      </div>
+
+      <div class="p-field">
+        <button [disabled]="botonBloqueado || cargandoReserva"
+        style="width: 200px;" 
+        pButton type="button" 
+        label="Pagar" 
+        (click)="pagar()"
+        ></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESUMEN DEL VUELO -->
+  <div id="resumenPago" class="resumen" style="flex: 1;">
+    <h3>Resumen de tu vuelo ✈️</h3>
+    <p><strong>Origen:</strong> {{ busqueda?.origen?.name }}</p>
+    <p><strong>Destino:</strong> {{ busqueda?.destino?.name }}</p>
+    <hr>
+    <p><strong>Salida:</strong> {{vuelo?.horaSalida}}</p>
+    <p><strong>Llegada:</strong> {{vuelo?.horaLlegada}}</p>
+    <hr>
+    <p><strong>Tipo de vuelo:</strong> {{vuelo?.vueloTipo}}</p>
+    <p><strong>Asiento:</strong> {{asiento?.fila}}{{asiento?.columna}} ({{asiento?.tipoAsiento}})</p>
+    <hr>
+    <h4>Total a pagar: ${{total}}</h4>
+  </div>
+
+</div>

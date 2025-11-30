@@ -1,39 +1,75 @@
+<h2 style="text-align: center;font-size: 38px; width: 100%; height: 50px; margin: 0; background-color: #3b0764; color: white;">
+    Volamos alto, sonamos fuerte
+</h2>
 <app-header></app-header>
 
 <h1 style="text-align:center; font-size:2rem; margin:2rem 0;">Selecciona tu horario de vuelo</h1>
 
-
 <h1 *ngIf="busqueda">Horarios disponibles {{ busqueda.origen?.name }} → {{ busqueda.destino?.name }} </h1>
 
-
 <p-accordion>
-  <p-accordionTab *ngFor="let horario of horarios"
-                  [header]="'Salida: ' + horario.horaSalida + ' - Llegada: ' + horario.horaLlegada"
-                  [selected]="false"
-                  style="margin-bottom: 2rem; font-size:1.3rem; text-align:center; box-shadow: 0 4px 8px rgba(128,0,128,0.2); border-radius: 8px; padding:1rem; background-color:#f5f0fa;"> <!-- acordeón más grande y centrado -->
-    <h3 style="text-align:center; font-size:2rem; margin:2rem 0;">Elige como quieres volar</h3>
+  <p-accordionTab *ngFor="let horario of horarios">
+
+    <ng-template pTemplate="header">
+
+      <div class="header-container">
+
+        <!-- Izquierda -->
+        <div class="header-left">
+          SALIDA: {{ horario.horaSalida }}
+          <span class="avion">✈</span>
+          LLEGADA: {{ horario.horaLlegada }}
+        </div>
+
+        <!-- Derecha -->
+        <div class="header-right">
+          Vuela desde: {{ horario.vuelos[0].precio | currency }}
+        </div>
+
+      </div>
+
+    </ng-template>
+    
+    <h3 style="text-align:center; font-size:2rem; margin:2rem 0;">Elige cómo quieres volar</h3>
+
     <div class="cards-container">
       <p-card *ngFor="let vuelo of horario.vuelos" class="vuelo-card">
         <h3 style="text-align:center; font-size:1.2rem;">{{ vuelo.tipo }}</h3>
 
         <ul class="vuelo-info">
-          <li><i class="pi pi-user" pTooltip="{{ vuelo.asientos }} asientos disponibles"></i> Asientos disponibles: {{ vuelo.asientos }}</li>
+          <li><i class="pi pi-user" pTooltip="{{ vuelo.asientos }} asientos disponibles"></i></li>
           <li><i class="pi pi-suitcase" pTooltip="{{ vuelo.equipaje }} equipajes"></i> Equipaje permitido: {{ vuelo.equipaje }} piezas</li>
-          <li>Descripción: {{ vuelo.descripcion }}</li>
+          <li *ngFor="let desc of vuelo.descripcion">{{ desc }}</li>
         </ul>
 
         <p class="precio">Precio: {{ vuelo.precio | currency }}</p>
-        <p-button label="Seleccionar" (onClick)="seleccionarVuelo(vuelo)" class="w-full"></p-button>
+        <p-button 
+        label="Seleccionar" 
+        (onClick)="seleccionarVuelo(vuelo, horario.idHorario, horario.horaSalida, horario.horaLlegada)" 
+        class="w-full"
+        [styleClass]="(vueloSeleccionado === (vuelo.tipo || '').trim()) ? 'btn-seleccionado w-full' : 'w-full'">
+        </p-button>
       </p-card>
     </div>
 
   </p-accordionTab>
 </p-accordion>
 
-<p style="text-align:center; margin: 2rem 0;">
+<div style="text-align:center; margin: 2rem 0; display:flex; justify-content:space-around">
+  <p-button 
+    label="← Volver" 
+    styleClass="p-button-rounded p-button-lg" 
+    (onClick)="irAHome()">
+  </p-button>
+  
   <p-button 
     label="Siguiente →" 
     styleClass="p-button-rounded p-button-lg" 
-    (onClick)="irAPasajeros()">
+    (onClick)="irAAsientos()">
   </p-button>
-</p>
+
+</div>
+
+<footer class="footer-mini">
+  © 2025 Aerolínea DJ. Todos los derechos reservados.
+</footer>

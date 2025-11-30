@@ -1,3 +1,103 @@
 <app-header></app-header>
-<app-card-login></app-card-login>
-<router-outlet />
+
+<div style="width: 60%; max-width: 600px; margin: 80px auto; display:flex; flex-direction:column; gap: 2rem; border: 3px solid #919191">
+
+  <!-- Selector dinámico -->
+  <p-selectButton 
+      *ngIf="!actionFromHeader"
+      [options]="stateOption" 
+      [(ngModel)]="action">
+  </p-selectButton>   
+
+  <!-- LOGIN -->
+  <p-card header="Iniciar Sesión" *ngIf="action === 'login'">
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" style="display:flex; flex-direction:column; gap:1.5rem;">
+
+      <!-- Email -->
+       <div>
+        <label>Ingrese tu email: </label>
+        <input pInputText type="email" formControlName="email" placeholder="correo@example.com" style="width:100%; padding:0.5rem; font-size:1rem;" />
+        <p-message *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" severity="error" [text]="getEmailError()"></p-message>
+        </div>
+      <!-- Contraseña -->
+       <div>
+        <label>Ingrese tu contraseña: </label>
+        <p-password 
+        placeholder="Contraseña" 
+        formControlName="password" 
+        toggleMask="true" 
+        [feedback]="false"></p-password>
+        <p-message *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" severity="error" [text]="getPasswordError()"></p-message>
+        </div>
+
+
+      <!-- Botón Login -->
+      <p-button label="Ingresar" type="submit" [loading]="loading" [disabled]="loading" ></p-button>
+
+    </form>
+  </p-card>
+
+  <!-- REGISTER -->
+  <p-card header="Registrarse" *ngIf="action === 'register'">
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()" style="display:flex; flex-direction:column; gap:1.5rem;">
+
+      <!-- Nombre completo -->
+       <div>
+        <label>Ingrese tu nombre: </label>
+        <input pInputText type="text" formControlName="nameReg" placeholder="Nombres" style="width:100%; padding:0.5rem; font-size:1rem;" />
+        <p-message *ngIf="registerForm.get('nameReg')?.invalid && registerForm.get('nameReg')?.touched" severity="error" [text]="getNameRegError()"></p-message>
+        </div>
+
+      <!-- Apellido -->
+       <div>
+        <label>Ingrese tu apellido: </label>
+        <input pInputText type="text" formControlName="apellidoReg" placeholder="Apellidos" style="width:100%; padding:0.5rem; font-size:1rem;" />
+        <p-message *ngIf="registerForm.get('apellidoReg')?.invalid && registerForm.get('apellidoReg')?.touched" severity="error" [text]="getApellidoRegError()"></p-message>
+        </div>
+
+        <div>
+        <label>Ingrese tu número de teléfono: </label>
+        <input pInputText type="text" formControlName="telefonoReg" placeholder="Número de teléfono" style="width:100%; padding:0.5rem; font-size:1rem;" />
+        <p-message *ngIf="registerForm.get('telefonoReg')?.invalid && registerForm.get('telefonoReg')?.touched"severity="error"[text]="getTelefonoRegError()"></p-message>
+        </div>
+      <!-- Email -->
+       <div>
+        <label>Ingrese tu email: </label>
+        <input pInputText type="email" formControlName="emailReg" placeholder="correo@example.com" style="width:100%; padding:0.5rem; font-size:1rem;" />
+        <p-message *ngIf="registerForm.get('emailReg')?.invalid && registerForm.get('emailReg')?.touched" severity="error" [text]="getEmailRegError()"></p-message>
+        </div>
+
+      <!-- Contraseña -->
+       <div>
+        <label>Ingrese tu contraseña: </label>
+        <p-password placeholder="Contraseña " formControlName="passwordReg" toggleMask="true" [feedback]="true"></p-password>
+        <p-message *ngIf="registerForm.get('passwordReg')?.invalid && registerForm.get('passwordReg')?.touched" severity="error" [text]="getPasswordRegError()"></p-message>
+        </div>
+
+      <!-- Confirmar contraseña -->
+       <div>
+        <label>Confirme tu contraseña: </label>
+        <p-password placeholder="Repetir contraseña" formControlName="confirmPasswordReg" toggleMask="true" [feedback]="false" ></p-password>
+        <p-message *ngIf="registerForm.get('confirmPasswordReg')?.invalid && registerForm.get('confirmPasswordReg')?.touched" severity="error" [text]="getConfirmPasswordRegError()"></p-message>
+        </div>
+
+      <!-- Fecha de nacimiento (opcional) -->
+       <!-- <div>
+        <label>Ingresa tu fecha de nacimiento: </label>
+        <input pInputText type="date" formControlName="dobReg" placeholder="Fecha de nacimiento" style="width:100%; padding:0.5rem; font-size:1rem;" />
+        </div> -->
+
+
+      <!-- Género (opcional) -->
+       <!-- <div>
+        <label>Género: </label>
+        <p-dropdown [options]="genderOptions" placeholder="Selecciona tu género" formControlName="genderReg" ></p-dropdown>
+        </div> -->
+
+      <!-- Botón Registrar -->
+      <p-button label="Registrarse" type="submit" [loading]="pulse" [disabled]="pulse || registerForm.invalid" ></p-button>
+
+    </form>
+  </p-card>
+
+</div>

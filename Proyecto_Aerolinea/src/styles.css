@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Walter+Turncoat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 @import "primeicons/primeicons.css";
 
 body {
@@ -8,7 +9,7 @@ body {
   /* background-color:#dedbf5 ; */
 }
 .p-component {
-  font-family: 'Walter Turncoat', cursive !important;
+  font-family: 'Montserrat', sans-serif !important;
   font-style: normal;
   color: black;
 }
@@ -19,7 +20,7 @@ body {
 }
 
 .p-button{
-  background-color: #a44de6 !important;
+  background-color: #924de6 !important;
 }
 
 .p-button:hover {
@@ -28,6 +29,13 @@ body {
 
 .p-button:active {
   background-color: white !important;
+  
+}
+
+.btn-seleccionado {
+  background-color: white !important;
+  color: black !important;
+  
 }
 
 .pi {
@@ -43,3 +51,4 @@ body {
   transform: scale(1.05); /* se agranda un poquito */
   box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* sombra más marcada al pasar */
 }
+

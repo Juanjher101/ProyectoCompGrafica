@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|c:\\proyecto final\\proyectocompgrafica\\backend\\aerolineaapi\\controllers\\rutascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|solutionrelative:controllers\\rutascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|c:\\proyecto final\\proyectocompgrafica\\backend\\aerolineaapi\\models\\rutas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|solutionrelative:models\\rutas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|c:\\proyecto final\\proyectocompgrafica\\backend\\aerolineaapi\\controllers\\vueloscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|solutionrelative:controllers\\vueloscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,12 +23,43 @@
       "RelativeMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|solutionrelative:models\\vuelo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|c:\\proyecto final\\proyectocompgrafica\\backend\\aerolineaapi\\models\\tipovuelo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|solutionrelative:models\\tipovuelo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|c:\\proyecto final\\proyectocompgrafica\\backend\\aerolineaapi\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|solutionrelative:controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|c:\\proyecto final\\proyectocompgrafica\\backend\\aerolineaapi\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|solutionrelative:models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|c:\\proyecto final\\proyectocompgrafica\\backend\\aerolineaapi\\controllers\\reservascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|solutionrelative:controllers\\reservascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|c:\\proyecto final\\proyectocompgrafica\\backend\\aerolineaapi\\models\\reserva.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|solutionrelative:models\\reserva.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\moral\\Downloads\\Metodos a Implementar (2).cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|c:\\proyecto final\\proyectocompgrafica\\backend\\aerolineaapi\\dtos\\reservacreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|solutionrelative:dtos\\reservacreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|c:\\proyecto final\\proyectocompgrafica\\backend\\aerolineaapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|c:\\proyecto final\\proyectocompgrafica\\backend\\aerolineaapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|c:\\proyecto final\\proyectocompgrafica\\backend\\aerolineaapi\\models\\asientos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|solutionrelative:models\\asientos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|c:\\proyecto final\\proyectocompgrafica\\backend\\aerolineaapi\\controllers\\asientoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1BFD63A-5500-4ED6-BB3C-A37AF548F898}|AerolineaAPI.csproj|solutionrelative:controllers\\asientoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,68 +69,195 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AereolineaContext.cs",
-              "DocumentMoniker": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Data\\AereolineaContext.cs",
-              "RelativeDocumentMoniker": "Data\\AereolineaContext.cs",
-              "ToolTip": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Data\\AereolineaContext.cs",
-              "RelativeToolTip": "Data\\AereolineaContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "TipoVuelo.cs",
+              "DocumentMoniker": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Models\\TipoVuelo.cs",
+              "RelativeDocumentMoniker": "Models\\TipoVuelo.cs",
+              "ToolTip": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Models\\TipoVuelo.cs",
+              "RelativeToolTip": "Models\\TipoVuelo.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAcwBEAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-21T04:17:25.708Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "VuelosController.cs",
-              "DocumentMoniker": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Controllers\\VuelosController.cs",
-              "RelativeDocumentMoniker": "Controllers\\VuelosController.cs",
-              "ToolTip": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Controllers\\VuelosController.cs",
-              "RelativeToolTip": "Controllers\\VuelosController.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAgwCcAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T21:58:28.613Z",
+              "WhenOpened": "2025-11-26T18:32:37.776Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T21:56:30.783Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Vuelo.cs",
               "DocumentMoniker": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Models\\Vuelo.cs",
               "RelativeDocumentMoniker": "Models\\Vuelo.cs",
               "ToolTip": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Models\\Vuelo.cs",
               "RelativeToolTip": "Models\\Vuelo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T21:26:50.966Z"
+              "WhenOpened": "2025-11-26T14:04:36.268Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "appsettings.Development.json",
-              "ToolTip": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\appsettings.Development.json",
-              "RelativeToolTip": "appsettings.Development.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-20T20:51:04.605Z"
+              "DocumentIndex": 9,
+              "Title": "Reserva.cs",
+              "DocumentMoniker": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Models\\Reserva.cs",
+              "RelativeDocumentMoniker": "Models\\Reserva.cs",
+              "ToolTip": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Models\\Reserva.cs",
+              "RelativeToolTip": "Models\\Reserva.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAA2wB0AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T06:39:17.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RutasController.cs",
+              "DocumentMoniker": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Controllers\\RutasController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RutasController.cs",
+              "ToolTip": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Controllers\\RutasController.cs",
+              "RelativeToolTip": "Controllers\\RutasController.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAswEMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-22T21:46:13.693Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "Models\\Usuario.cs",
+              "ToolTip": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Models\\Usuario.cs",
+              "RelativeToolTip": "Models\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T02:37:04.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AereolineaContext.cs",
+              "DocumentMoniker": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Data\\AereolineaContext.cs",
+              "RelativeDocumentMoniker": "Data\\AereolineaContext.cs",
+              "ToolTip": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Data\\AereolineaContext.cs",
+              "RelativeToolTip": "Data\\AereolineaContext.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBEAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T14:53:20.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "VuelosController.cs",
+              "DocumentMoniker": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Controllers\\VuelosController.cs",
+              "RelativeDocumentMoniker": "Controllers\\VuelosController.cs",
+              "ToolTip": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Controllers\\VuelosController.cs",
+              "RelativeToolTip": "Controllers\\VuelosController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwEUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T14:00:46.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Rutas.cs",
+              "DocumentMoniker": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Models\\Rutas.cs",
+              "RelativeDocumentMoniker": "Models\\Rutas.cs",
+              "ToolTip": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Models\\Rutas.cs",
+              "RelativeToolTip": "Models\\Rutas.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T13:55:33.996Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ReservasController.cs",
+              "DocumentMoniker": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Controllers\\ReservasController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ReservasController.cs",
+              "ToolTip": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Controllers\\ReservasController.cs",
+              "RelativeToolTip": "Controllers\\ReservasController.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAmwEMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T06:40:58.1Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UsuariosController.cs",
+              "DocumentMoniker": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Controllers\\UsuariosController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsuariosController.cs",
+              "ToolTip": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Controllers\\UsuariosController.cs",
+              "RelativeToolTip": "Controllers\\UsuariosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T02:37:57.388Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ReservaCreateDTO.cs",
+              "DocumentMoniker": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\DTOs\\ReservaCreateDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\ReservaCreateDTO.cs",
+              "ToolTip": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\DTOs\\ReservaCreateDTO.cs",
+              "RelativeToolTip": "DTOs\\ReservaCreateDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T15:31:03.209Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAB4AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T17:08:28.649Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Metodos a Implementar (2).cs",
+              "DocumentMoniker": "C:\\Users\\moral\\Downloads\\Metodos a Implementar (2).cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Users\\moral\\Downloads\\Metodos a Implementar (2).cs",
+              "ToolTip": "C:\\Users\\moral\\Downloads\\Metodos a Implementar (2).cs",
+              "RelativeToolTip": "..\\..\\..\\..\\Users\\moral\\Downloads\\Metodos a Implementar (2).cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T19:51:02.761Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Asientos.cs",
+              "DocumentMoniker": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Models\\Asientos.cs",
+              "RelativeDocumentMoniker": "Models\\Asientos.cs",
+              "ToolTip": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Models\\Asientos.cs",
+              "RelativeToolTip": "Models\\Asientos.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAYwCYAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T14:52:44.415Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AsientosController.cs",
+              "DocumentMoniker": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Controllers\\AsientosController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AsientosController.cs",
+              "ToolTip": "C:\\Proyecto Final\\ProyectoCompGrafica\\Backend\\AerolineaAPI\\Controllers\\AsientosController.cs",
+              "RelativeToolTip": "Controllers\\AsientosController.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAgwC4AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T14:54:03.519Z"
             }
           ]
         }
